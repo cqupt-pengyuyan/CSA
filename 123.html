@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .done{
+
+            text-decoration:line-through ;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="inp"><button id="btadd">Add</button>
+    <div class="tbox"></div>
+   
+    <script>
+
+var ebtadd=document.querySelector('#btadd');
+var etbox=document.querySelector('.tbox');
+var einp=document.querySelector('#inp');
+
+
+ebtadd.onclick=function(){
+    etbox.insertAdjacentHTML(
+"beforeend",
+
+` <div>
+    <button>√</button>
+    <button>X</button>
+    <span>${einp.value}</span>
+</div>`
+
+    )
+    einp.value='';
+    einp.focus();
+}
+etbox.onclick=function(){
+
+    var tg=event.target;
+    var tgkids=tg.parentElement.children;
+    if(tg.innerHTML=='√'){
+       tgkids[2].classList.add('done');
+    }
+    if(tg.innerHTML=='X'){
+       tg.parentElement.remove();
+    }
+}
+    </script>
+    
+</body>
+</html>
