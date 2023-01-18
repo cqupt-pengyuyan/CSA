@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+.container{
+    display: flex;
+    justify-content: center;
+}
+.comment-box{
+    background-color: rgb(250, 248, 248);
+    width: 85%;
+    margin-top: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+button{
+    margin: 12px 0 0 10px;
+            border: 0;
+            color: white;
+            background: rgb(5, 109, 232);
+            padding: 12px 20px 12px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.2s ease;
+}
+button:hover{
+    background: gray;
+            color: black;
+}
+
+.header{
+    margin: 15px 20px;
+            font-size: 27px;
+            font-weight: 600;
+            color: rgb(5, 109, 232);
+}
+input[type="text"],
+textarea{
+    margin: 5px 10px;
+    outline: none;
+    background: #efefef;
+    border: 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+textarea{
+    width: 85%;
+    resize: none;
+    font-size: 27px;
+}
+input[type="text"]{
+    width: 50%;
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+h4{
+    margin: 10px 30px;
+    text-transform: capitalize;
+}
+hr{
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+span.date{
+    font-weight: 300;
+    font-size: 12px;
+    float: right;
+    margin-right: 10px;
+}
+.comment-box p{
+    height: 100px;
+            margin: 0 30px 15px;
+            font-weight: 1000;
+            color: gray;
+            background-color: #efefef;
+}
+textarea:disabled,
+[type="text"]:disabled,
+button:disabled{
+    background-color: gray;
+    cursor: not-allowed;
+}
+button:disabled:hover{
+    background-color: gray;
+}
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="comment-box">
+            <div class="comment-form">
+                <div class="header"><h1>发布问题</h1></div>
+                <div>
+                    <input type="text" id="name" placeholder="输入您的问题标题">
+                </div>
+                <div>
+                    <textarea name="" id="comment" cols="30" rows="10" placeholder="请输入内容..."></textarea>
+                </div>
+                <button id="btn-submit">发表</button>
+            </div>
+            <div>
+                <h4 class="header">问题列表</h4>
+                <div id="comments">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+   <script>
+    const comments = [
+    {
+        name: "为什么蔡徐坤被叫做鸡哥😈",
+        comment:
+            "我是ikun，为什么这么多人黑我家哥哥，难道他不帅吗，难道只因你太美这个表演不好看吗，你们一点审美都没有，我都学会我们家哥哥的只因舞了，你们怎么这样子，为什么要黑？！",
+        time: "Fri Jan 13 2023 23:02:23 GMT+0800 (中国标准时间）",
+    },
+    {
+        name: "关于亲戚关系",
+        comment: "为什么我要管我大姑家二妹的小舅舅的三大爷的亲孙子的大姑奶奶叫太奶奶？大家帮我分析下",
+        time: "Fri Jan 13 2023 23:03:03 GMT+0800 (中国标准时间）",
+    },
+];
+const commentsBox = document.querySelector('#comments');
+let nameInput = document.querySelector('#name');
+let commentInput = document.querySelector('#comment');
+const btnSubmit = document.querySelector("#btn-submit");
+const btnClose =document.querySelector(".btn-close");
+const rennderComments=function(comments){
+    commentsBox.innerHTML=""
+    comments.forEach((item) => {
+        commentsBox.insertAdjacentHTML(
+            'beforeend',
+            `<hr>
+            <h4>
+                <span>${item.name}</span>
+                <span class="date">${item.time}</span>
+            </h4>
+            <p>${item.comment}</p>
+            `
+        )
+    }
+    )
+}
+
+rennderComments(comments);
+
+btnSubmit.onclick = function () {
+    let nameStr = nameInput.value.replace(/<(\/?\w+)>/g, "&lt;$1&gt;");
+    let commentStr = commentInput.value.replace(/<(\/?\w+)>/g, "&lt;$1&gt;");
+    comments.unshift(
+        {
+            name:nameStr,
+            comment:commentStr,
+            time:new Date(),
+        }
+    );
+    rennderComments(comments);
+}
+
+
+   </script>
+</body>
+</html>
