@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+.container{
+    display: flex;
+    justify-content: center;
+}
+.comment-box{
+    background-color: rgb(250, 248, 248);
+    width: 85%;
+    margin-top: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+button{
+    margin: 12px 0 0 10px;
+            border: 0;
+            color: white;
+            background: rgb(5, 109, 232);
+            padding: 12px 20px 12px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.2s ease;
+}
+button:hover{
+    background: gray;
+            color: black;
+}
+
+.header{
+    margin: 15px 20px;
+            font-size: 27px;
+            font-weight: 600;
+            color: rgb(5, 109, 232);
+}
+input[type="text"],
+textarea{
+    margin: 5px 10px;
+    outline: none;
+    background: #efefef;
+    border: 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+textarea{
+    width: 85%;
+    resize: none;
+    font-size: 27px;
+}
+input[type="text"]{
+    width: 50%;
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+h4{
+    margin: 10px 30px;
+    text-transform: capitalize;
+}
+hr{
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+span.date{
+    font-weight: 300;
+    font-size: 12px;
+    float: right;
+    margin-right: 10px;
+}
+.comment-box p{
+    height: 100px;
+            margin: 0 30px 15px;
+            font-weight: 1000;
+            color: gray;
+            background-color: #efefef;
+}
+textarea:disabled,
+[type="text"]:disabled,
+button:disabled{
+    background-color: gray;
+    cursor: not-allowed;
+}
+button:disabled:hover{
+    background-color: gray;
+}
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="comment-box">
+            <div class="comment-form">
+                <div class="header"><h1>发布文章</h1></div>
+                <div>
+                    <input type="text" id="name" placeholder="输入您的标题">
+                </div>
+                <div>
+                    <textarea name="" id="comment" cols="30" rows="10" placeholder="请输入内容..."></textarea>
+                </div>
+                <button id="btn-submit">发表</button>
+            </div>
+            <div>
+                <h4 class="header">文章列表</h4>
+                <div id="comments">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+   <script>
+    const comments = [
+    {
+        name: "重庆🏊‍砖3g传说",
+        comment:
+            "2005年10月9日下午2:30,重庆市人民政府新闻办公室在重庆市新闻发布中心举行了新闻发布会。会议郑重发布了“世界第一颗0.13微米工艺的TD-SCDMA 3G手机核心芯片在重庆诞生”这一令国人自豪和骄傲的重大喜讯。重庆市人民政府新闻办和重庆邮电学院在此间联合宣布:具有我国自主知识产权的世界首枚“通芯一号”3G手机核心芯片已由重庆重邮信科股份有限公司(简称重邮信科)研发成功,并向媒体人士展示亮相。这是世界上第一枚0.13微米工艺的TD-SCDMA 3G手机基带芯片。它的诞生,标志着我国3G通信核心芯片等关键技术已达到了世界领先水平。实现了从“中国制造”到“中国创造”的跨越。",
+        time: "Fri Jan 13 2023 23:02:23 GMT+0800 (中国标准时间）",
+    },
+    {
+        name: "JAVASCRIPT",
+        comment: "JavaScript（简称“JS”） 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。JavaScript 基于原型编程、多范式的动态脚本语言，并且支持面向对象、命令式、声明式、函数式编程范式。",
+        time: "Fri Jan 13 2023 23:03:03 GMT+0800 (中国标准时间）",
+    },
+];
+const commentsBox = document.querySelector('#comments');
+let nameInput = document.querySelector('#name');
+let commentInput = document.querySelector('#comment');
+const btnSubmit = document.querySelector("#btn-submit");
+const btnClose =document.querySelector(".btn-close");
+const rennderComments=function(comments){
+    commentsBox.innerHTML=""
+    comments.forEach((item) => {
+        commentsBox.insertAdjacentHTML(
+            'beforeend',
+            `<hr>
+            <h4>
+                <span>${item.name}</span>
+                <span class="date">${item.time}</span>
+            </h4>
+            <p>${item.comment}</p>
+            `
+        )
+    }
+    )
+}
+
+rennderComments(comments);
+
+btnSubmit.onclick = function () {
+    let nameStr = nameInput.value.replace(/<(\/?\w+)>/g, "&lt;$1&gt;");
+    let commentStr = commentInput.value.replace(/<(\/?\w+)>/g, "&lt;$1&gt;");
+    comments.unshift(
+        {
+            name:nameStr,
+            comment:commentStr,
+            time:new Date(),
+        }
+    );
+    rennderComments(comments);
+}
+
+
+   </script>
+</body>
+</html>
