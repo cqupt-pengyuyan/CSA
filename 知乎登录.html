@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+
+
+</head>
+<style>
+     body{
+        background-image: url(images/48319254_p0.png);
+       
+       background-repeat: no-repeat;
+       background-size: 100%;;
+    }   
+    * {
+            margin: 0;
+            padding: 0;
+        }
+
+         body {
+           
+
+            background-repeat: no-repeat;
+            background-size: 100%;
+        } 
+
+        .container {
+            position: relative;
+     
+            border-radius: 40px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            padding: 0.6rem;
+            width: 50rem;
+            height: 35rem;
+            margin: auto;
+            margin-top: 100px;
+
+        }
+        .inputin{
+            margin: 0 auto;
+        }
+     input{
+        display: block;
+        margin-left: 100px;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        width: 30rem;
+        height: 5rem;
+        padding: 10px;
+        margin:20px;
+        margin-left: 150px;
+        background-color: rgba(0,0,0,0);
+        color:black;
+        font-size: 26px;
+        
+       }
+       button{
+        border-radius: 10px;
+        margin-left: 190px;
+        border: 1px solid rgb(5,109,232);
+        background: #417dff;
+        color: white;
+        font-size: large;
+        font-family: Arial, Helvetica, sans-serif;
+        width:400px;
+       height:40px;
+
+       }
+       
+       
+       
+       h1{
+font-family: Arial, Helvetica, sans-serif;
+margin-left:14rem;
+font-size: 50px;
+color:rgb(5,109,232);
+
+
+
+
+       }
+    
+    </style>
+<body>
+    <div class="container">
+        <div class="form-container sign-up-container">
+            <h1>欢迎来到只因乎</h1>
+           
+            <div class="inputin">
+                <input type="text" placeholder="用户名">
+            <input type="password" placeholder="密码">
+            <input type="submit" class="input_sub" value="登录">
+       
+
+            </div> 
+            
+           
+        </div>
+    </div>
+    <script>
+        let input_txt=document.querySelector('.text');
+        let input_pass=document.querySelector('.password');
+        let input_sub=document.querySelector('.input_sub');
+        input_sub.onclick=function(){
+            let username=inpuit_txt.value
+            let password=input_pass.value
+            if(username.length>=6&&password.length>=6){
+                alart('登录成功')
+                localStorage.setItem('username',username)
+                localStorage.setItem('password',password)
+                window.location.href='file:///C:/Users/14231/Desktop/阉割版知乎/知乎主界面.html'
+
+            }else{
+                alart('登陆失败')
+            }
+        }
+        input_txt.value=localStorage.getItem('username')
+        input_pass=localStorage.getItem('password')
+    </script>
+</body>
+</html>
