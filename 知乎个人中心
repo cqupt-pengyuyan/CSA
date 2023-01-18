@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    .w {
+        width: 1500px;
+        margin: auto;
+    }
+
+    /* 头部部分 */
+    .header {
+        height: 45px;
+        margin: 30px auto;
+    }
+
+    /* 所有链接都没有下划线 */
+    a {
+        text-decoration: none;
+
+    }
+
+    /* 头部知乎logo */
+    .logo {
+        width: 90px;
+        height: 45px;
+        background-color: aliceblue;
+        float: left;
+    }
+
+    /* 导航标 */
+    .nav {
+        float: left;
+
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .nav ul li {
+        float: left;
+    }
+
+    .nav ul li a {
+        display: block;
+        height: 45px;
+        line-height: 45px;
+        font-size: 18px;
+        color: gray;
+        padding: 0 30px;
+    }
+
+    .nav ul li a:hover {
+        color: black;
+
+    }
+
+    /* 搜索框 */
+    .search {
+        width: 600px;
+        float: left;
+    }
+
+    .search input {
+        float: left;
+        width: 500px;
+        height: 40px;
+        border-radius: 50px;
+        color: gray;
+        font-size: 14px;
+        padding-left: 15px;
+
+    }
+
+    /* 搜索按钮 */
+    .search button {
+        float: left;
+        width: 45px;
+        height: 40px;
+        background-image: url(images/search.png);
+        background-repeat: no-repeat;
+        border-radius: 25px;
+
+        border: 0;
+
+
+    }
+
+    /* 用户头像及ID */
+    .user {
+
+        float: right;
+        margin-left: 45px;
+        line-height: 45px;
+        font-size: 14px;
+        color: rgb(253, 251, 251)
+    }
+
+    .userbox {
+
+        margin: 30px;
+        background-color: rgb(5, 109, 232);
+        height: 300px;
+        font-size: 30px;
+
+    }
+
+    .function {
+        float: right;
+        width: 450px;
+        height: 180px;
+        margin: 20px 20px;
+        background-color: rgb(250, 248, 248);
+    }
+
+    .nav1 {
+        display: block;
+        width: 450px;
+        height: 50px;
+        margin: 10px;
+        text-indent: 1em;
+        font-size: 30px;
+        color: black;
+        line-height: 50px;
+        background-color: rgb(5, 109, 232);
+    }
+
+    a:hover {
+        background-color: gray;
+        color: white;
+    }
+
+    .novel {
+        float: right;
+        width: 1024px;
+        height: 752px;
+        margin: 20px 20px;
+        background-color: rgb(250, 248, 248);
+    }
+
+    .tab_list {
+
+        width: 1024px;
+        background-color: rgb(5, 109, 232);
+        font-size: 24px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700px;
+    }
+
+    .tab_list input {
+        display: none;
+
+    }
+
+    .tab_list label {
+        width: 100px;
+        height: 40px;
+        display: inline-block;
+        background-color: rgb(5, 109, 232);
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        color: black;
+
+    }
+
+    .tab_list label:hover {
+        background-color: white;
+        color: black;
+    }
+
+    .content {
+        width: 1024px;
+        height: 752px;
+        background-color: rgb(250, 248, 248);
+        float: left;
+
+    }
+
+    #c1:checked~label[for="c1"] {
+        background-color: gray;
+    }
+
+    #c2:checked~label[for="c2"] {
+        background-color: gray;
+    }
+
+    #c3:checked~label[for="c3"] {
+        background-color: gray;
+    }
+
+    #c4:checked~label[for="c4"] {
+        background-color: gray;
+    }
+
+    #c5:checked~label[for="c5"] {
+        background-color: gray;
+    }
+
+    .content li {
+        width: 1024px;
+        height: 752px;
+        background-color: rgb(250, 248, 248);
+
+    }
+
+    #c1:checked~ul {
+        margin-left: 0px;
+    }
+
+    #c2:checked~ul {
+        margin-left: 0px;
+    }
+
+    #c3:checked~ul {
+        margin-left: 0px;
+    }
+
+    #c:checked~ul {
+        margin-left: 0px;
+    }
+
+    #c1:checked~ul {
+        margin-left: 0px;
+    }
+
+    #c1:checked~ul {
+        margin-left: 0px;
+    }
+</style>
+</head>
+
+<body>
+    <!-- 整个头部 -->
+    <div class="header w">
+        <!-- logo -->
+        <div class="logo">
+            <img src="images/1.png" height="45px">
+
+        </div>
+        <!-- 导航部分 -->
+        <div class="nav">
+            <ul>
+                <li><a href="知乎主界面.html" target="_blank">首页</a></li>
+                <li><a href="个人中心.html" target="_blank">发布</a></li>
+                <li><a href="个人中心.html" target="_blank">回答</a></li>
+                <li><a href="个人中心.html" target="_blank">评论</a></li>
+                <li><a href="个人中心.html" target="_blank">收藏</a></li>
+                <li><a href="注册.html" target="_blank">注册</a></li>
+                <li><a href="登录.html" target="_blank">登录</a></li>
+            </ul>
+        </div>
+        <!-- 搜索框 -->
+        <div class="search">
+            <input type="text" placeholder="输入您的关键词">
+            <button></button>
+        </div>
+        <!-- 用户头像及ID -->
+        <div class="user">
+            <a href="个人中心.html" target="_blank"><img src="images/user.png" height="45px"></a>
+            Ryuy.
+        </div>
+    </div>
+
+    <div class="userbox">
+        <h1>ID:Ryuy.</h1>
+    </div>
+    <!-- 左侧内容框 -->
+    <!--右侧文本框-->
+    <div class="function">
+        <a href="发布问题.html" class="nav1" target="_blank">发布问题</a>
+        <a href="个人中心.html" class="nav1" target="_blank">回答问题</a>
+        <a href="发布文章.html" class="nav1" target="_blank">发布文章</a>
+    </div>
+    <!--tab栏-->
+    <div class="container">
+        <div class="tab_box">
+            <button class="tab_btn">发布文章</button>
+            <button class="tab_btn">发布问题</button>
+            <button class="tab_btn">回答</button>
+            <button class="tab_btn">收藏</button>
+            <button class="tab_btn">评论</button>
+        </div>
+        <div class="content_box">
+            <div class="content">
+                <h2>我的文章</h2>
+                <p>
+                    123
+                </p>
+            </div>
+
+            <div class="content">
+                <h2>我的问题</h2>
+                <p>
+                    456
+                </p>
+            </div>
+
+            <div class="content">
+                <h2>我的回答</h2>
+                <p>
+                    789
+                </p>
+            </div>
+
+            <div class="content">
+                <h2>我的收藏</h2>
+                <p>
+                    101112
+                </p>
+            </div>
+
+            <div class="content">
+                <h2>我的评论</h2>
+                <p>
+                    111213
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
