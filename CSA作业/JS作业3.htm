@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+const arr = [[1,[2,3],4],[5,[6,7],8,9]];
+
+function kk(array) {//封装一个关于降维数组的函数
+  return array.reduce((arr1, present) => {//reduce的固定写法,//前面代表计数器，后面代表数组中的元素
+    if(Array.isArray(present)) {//如果说这个数组经过不断reduce后还是数组的话就返回true，然后在返回给函数进行递归的操作
+        //第一次返回给函数[1,[2,3],4],[5,[6,7],8,9]
+        //第二次返回给函数[2,3],[6,7]
+        //第一次无else返回
+        //第二次返回1，4，5，8，9
+        //第三次返回2，3，6，7
+      return arr1.concat(kk(present)); 
+    } else {
+      return arr1.concat(present);//直接返回arr1给cosole.log出来
+    }
+  }, []);
+}
+
+console.log(kk(arr)); 
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
