@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+function sum(n){
+    var i=1;
+    if(n<=1){
+        return i;
+    }else{
+        return n*sum(n-1);
+    }
+}
+var n=10;
+var sum1=0;
+for(var i=1;i<=n;i++){
+    sum1+=sum(i);
+}
+console.log(sum1);
+
+
+
+
+
+
+
+
+
+
+</script>
+<body>
+    
+</body>
+</html>

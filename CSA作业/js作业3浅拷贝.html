@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+function clone(b){//浅拷贝相当简单，只需要去设定一个新的空数组或者空对象，再用循环的方式把旧的对象的内容赋值到新的里面即可
+    let a={};//创建新的对象 
+    for(const i in b){
+        a[i]=b[i];//相当于数组的下标索引以及进行赋值
+    }
+    return a;
+
+}
+
+var c=['woshinidie'];
+var d=clone(c);
+console.log(d);
+
+
+   
+</script>
+<body>
+    
+</body>
+</html>
