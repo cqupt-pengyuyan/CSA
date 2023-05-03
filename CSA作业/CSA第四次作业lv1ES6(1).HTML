@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+var funcs = [];
+
+for (var i = 0; i < 10; i++) {
+  // 使用立即执行函数创建一个闭包
+  (function(j) {
+    funcs.push(function() {
+      console.log(j);
+    });//funs相当于一个函数数组，每个元素相当于执行这个function
+  })(i); // 将i递给立即执行函数的参数j
+}
+
+funcs.forEach(function(func) {//func为形参
+  func();//由于数组中的函数没办法自己执行，所以通过回调的做法让每个元素函数执行
+});//funcs 数组是已经定义好的一个包含多个函数的数组，然后将它们都遍历一遍并执行。对于每个被遍历到的函数，它会被作为参数传递给 forEach 函数的回调函数，并在回调函数中被调用。
+</script>
+<body>
+    
+</body>
+</html>

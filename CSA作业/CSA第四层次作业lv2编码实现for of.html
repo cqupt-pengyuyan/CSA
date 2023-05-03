@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+let obj = {
+  name: "Zx",
+  age: 19,
+  gender: "male",
+  level: "cai",
+  [Symbol.iterator](){//指针对象    
+    let index=0;//访问对象的value
+    const keys=Object.keys(this);//创建常量来赋值对象的key值    
+//this指代当前的对象，通过内置函数objects.keys（）来返回一个包含对象所有可以枚举属性的内容的数组
+//keys就相当于一个包含了当前对象所有属性名的数组
+    return {
+        next:function(){//next方法
+            if(index<keys.length){//keys的index就相当于数组的下标对应值
+                const result={value:this[keys[index++]],done:false};
+                
+           return result;
+            }else{
+                return{value:undefined,done:true};
+            }//使用if else语句来中断循环
+           
+        }
+    };
+  }
+};
+
+
+
+for(let i of obj){
+    console.log(i);
+}
+//迭代器的原理
+//1.创建一个指针对象，指向当前数据的起始位置
+//2.第一次调用对象的next方法，指针自动指向数据结构的第一个成员
+//3.接下来每次都不断调用next方法来让指针一直往后移动，直到指向最后的一个成员
+//4.每次调用next方法返回一个包含value和done属性的对象
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// for (const key in obj) {//通过for in在数组中相当于访问下标，而在对象中相当于访问前面的value值
+//   const value = obj[key];//定义value常量等于对象的name，age....等等，相当于指针，我觉得更适合理解为键值对
+//   console.log(`${key}: ${value}`);
+// }//这里的key就是前面的name....而value为里面的值
+
+
+
+
+</script>
+<body>
+    
+</body>
+</html>

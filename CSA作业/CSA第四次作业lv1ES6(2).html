@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSD</title>
+</head>
+
+<body></body>
+<script>
+class Person{
+constructor(name,age){//声明两个属性
+  this.name=name;
+  this.age=age;
+}
+speak() {//声明一个方法
+    console.log(`我叫${this.name}我今年${this.age}.`);
+  }
+}
+
+class Student extends Person{//定义一个父类使用extends来继承Person的属性和方法
+  constructor(name,age,score){//定于父类的三个属性
+    super(name,age);//使用super来继承子类的属性
+    this.score=score;
+
+  }
+  speak(){//父类的方法其中也使用了子类的属性
+    console.log(`我叫${this.name}我今年${this.age}岁，我的三科分数为${this.score}!`);
+  }
+}
+const Student1=new Student('马金鹏',18,[99,99,99]);//定义一个常量的父类
+console.log(Student1);
+
+</script>
+
+
+</html>
