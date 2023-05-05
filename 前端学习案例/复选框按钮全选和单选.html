@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>
+        <input type="checkbox" name="fruits" value="apple" id="abc"> fruits
+      </label>
+      <br>
+    <form id="abcd">
+        
+        <label>
+          <input type="checkbox" name="fruits" value="apple"> Apple
+        </label>
+        <br>
+        <label>
+          <input type="checkbox" name="fruits" value="banana"> Banana
+        </label>
+        <br>
+        <label>
+          <input type="checkbox" name="fruits" value="orange"> Orange
+        </label>
+      </form>
+      
+
+</body>
+<script>
+var fruits=document.getElementById('abcd').getElementsByTagName('input');//选取所有的按钮 
+var fruit=document.getElementById('abc'); //选取全选按钮  
+
+    fruit.onclick=function(){//给全选按钮绑定注册事件 
+       for(var i=0;i<fruits.length;i++){
+        fruits[i].checked=this.checked;//通过循环来给所有的按钮注册的点击事件为true即实现全选
+       }
+    }
+for(var i=0;i<fruits.length;i++){
+   
+    //给每个元素绑定点击事件
+    fruits[i].onclick=function(){
+        var flag=true;//判定全选按钮和单选按钮之间的关系
+        for(var i=0;i<fruits.length;i++){
+        if(!fruits[i].checked){//通过双循环进行检查，如果在所有的按钮中有----一个----按钮没有不是true就会进入到if里面给flag赋值为flase，让后让全选按钮的fllag和单选的相同
+            flag=false;
+        }//当所有的按钮都被选到的时候不进入if即flag为true，实现了全选
+
+    }
+    fruit.checked=flag;
+
+    }
+   
+}
+
+</script>
+</html>
