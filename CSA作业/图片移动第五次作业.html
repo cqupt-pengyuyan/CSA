@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Move Image Example</title>
+	
+</head>
+
+<body>
+
+
+	<div class="circle" id="circle1"></div>
+	<br>
+	<div class="circle" id="circle2"></div>
+	<br>
+	<div class="circle" id="circle3"></div>
+	<br>
+
+	<style>
+		.circle {
+			width: 50px;
+			height: 50px;
+			border-radius: 25px;
+			position: absolute;
+			left: 100px;
+		}
+
+		#circle1 {
+			background-color: red;
+			top: 0;
+		}
+
+		#circle2 {
+			background-color: blue;
+			top: 60px;
+		}
+
+		#circle3 {
+			background-color: green;
+			top: 120px;
+		}
+	</style>
+</body>
+<script>
+function moveCircle(circle, endPosition) {
+		let currentPosition = parseInt(circle.style.left) || 0;
+		let intervalId = setInterval(() => {
+			if (currentPosition >= endPosition) {
+				clearInterval(intervalId);
+				setTimeout(() => {
+					if (circle === circle1) {
+						moveCircle(circle2, 250);
+					} else if (circle === circle2) {
+						moveCircle(circle3, 250);
+					}
+				}, 1000);
+			} else {
+				currentPosition += 5;
+				circle.style.left = `${currentPosition}px`;
+			}
+		}, 10);
+	}
+
+	moveCircle(circle1, 250);
+</script>
+
+</html>
+
